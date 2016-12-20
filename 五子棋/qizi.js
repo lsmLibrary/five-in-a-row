@@ -86,8 +86,9 @@ canvas.onclick = function (event) {
     if (y >= 15) {
         y = 15
     }
-    drawChesspieces(x, y, bool);
-    for (var i = 0; i < count; i++) {
+    var istrue =drawChesspieces(x, y, bool);
+    if (istrue) {
+     for (var i = 0; i < count; i++) {
         if (wins[x][y][i]) {
             myWin[i]++;
             computerWin[i] = 7;
@@ -96,6 +97,7 @@ canvas.onclick = function (event) {
                 over = true;
             }
         }
+    }
     }
     if (!over) {
         bool = !bool;
@@ -129,10 +131,14 @@ var drawChesspieces = function (x, y, am) {
             gradient.addColorStop(1, "#F9F9F9");
             chessXY[x][y] = 2;
         }
-    }
+
     context.fillStyle = gradient;
     context.fill();
-    context.beginPath();
+    context.beginPath();  
+    return true;
+    }else{
+        return false
+    }
 };
 //计算机Air
 function computerAI() {

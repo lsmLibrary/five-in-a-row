@@ -65,7 +65,7 @@ for (var i = 0; i < count; i++) {
 
 
 var img = new Image;
-img.src = "../img/star.png";
+img.src = "./img/star.png";
 img.onload = function () {
     context.drawImage(img, 0, 0, 500, 500);
     drawCheckerboard();

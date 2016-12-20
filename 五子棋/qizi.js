@@ -86,22 +86,22 @@ canvas.onclick = function (event) {
     if (y >= 15) {
         y = 15
     }
-    var istrue =drawChesspieces(x, y, bool);
+    var istrue = drawChesspieces(x, y, bool);
     if (istrue) {
-     for (var i = 0; i < count; i++) {
-        if (wins[x][y][i]) {
-            myWin[i]++;
-            computerWin[i] = 7;
-            if (myWin[i] == 5) {
-                alert("你赢了");
-                over = true;
+        for (var i = 0; i < count; i++) {
+            if (wins[x][y][i]) {
+                myWin[i]++;
+                computerWin[i] = 7;
+                if (myWin[i] == 5) {
+                    alert("你赢了");
+                    over = true;
+                }
             }
         }
-    }
-    }
-    if (!over) {
-        bool = !bool;
-        computerAI();
+        if (!over) {
+            bool = !bool;
+            computerAI();
+        }
     }
 };
 //绘制棋盘
@@ -132,12 +132,12 @@ var drawChesspieces = function (x, y, am) {
             chessXY[x][y] = 2;
         }
 
-    context.fillStyle = gradient;
-    context.fill();
-    context.beginPath();  
-    return true;
-    }else{
-        return false
+        context.fillStyle = gradient;
+        context.fill();
+        context.beginPath();
+        return true;
+    } else {
+        return false;
     }
 };
 //计算机Air
@@ -145,7 +145,7 @@ function computerAI() {
     var myScore = [];
     var computerScore = [];
     var max = 0;
-    var x= 0,y=0;
+    var x = 0, y = 0;
     for (var i = 0; i <= 15; i++) {
         myScore[i] = [];
         computerScore[i] = [];
@@ -182,29 +182,29 @@ function computerAI() {
                 }
                 if (myScore[i][j] > max) {
                     max = myScore[i][j];
-                    x=i;
-                    y=j;
-                } else if (myScore[i][j]  == max) {
-                    if (computerScore[i][j]>computerScore[x][y]) {
-                        x=i;
-                        y=j;
+                    x = i;
+                    y = j;
+                } else if (myScore[i][j] == max) {
+                    if (computerScore[i][j] > computerScore[x][y]) {
+                        x = i;
+                        y = j;
 
                     }
                 }
                 if (computerScore[i][j] > max) {
                     max = computerScore[i][j];
-                    x=i;
-                    y=j;
-                } else if (computerScore[i][j]  == max) {
-                    if (myScore[i][j]>myScore[x][y]) {
-                        x=i;
-                        y=j;
+                    x = i;
+                    y = j;
+                } else if (computerScore[i][j] == max) {
+                    if (myScore[i][j] > myScore[x][y]) {
+                        x = i;
+                        y = j;
                     }
                 }
             }
         }
     }
-    drawChesspieces(x,y,false);
+    drawChesspieces(x, y, false);
     chessXY[x][y] = 2;
     for (var i = 0; i < count; i++) {
         if (wins[x][y][i]) {
